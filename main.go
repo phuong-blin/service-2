@@ -22,7 +22,7 @@ func main() {
 		ans := wordcount(str)
 		fmt.Printf("= %d", ans)
 	default: 
-		fmt.Println("Illegal pls stop :)")
+		fmt.Println("Illegal :)")
 	}
 }
 
