@@ -1,0 +1,21 @@
+name: Trigger upstream build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest # placeholder, it doesnt matter what platform is defined here 
+    
+    steps:
+    - name: Trigger main repo build
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.INTEGRATION_TOKEN }}
+        script: |
+          await github.rest.repos.createDispatchEvent({
+            owner: 'phuong-blin',
+            repo: 'workflows', 
+            event_type: 'service-updated' // match this with upstream
+          });
